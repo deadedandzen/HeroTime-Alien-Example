@@ -141,40 +141,38 @@
 			}
 		},
 		"omniMenu": {
-		"type": "palladium:command",
-		"icon": "#grave.ht:proto/proto_codes",
-		"title": {"translate":"ability.grave.ht.omnitrix.openmenu","bold":true,"color":"#ffffff"},
-		"bar_color": "light_gray",
-		"hidden": true,
-		"hidden_in_bar": false,
-		"list_index": 4,
-		"first_tick_commands": [],
-		"last_tick_commands": [],
-		"commands": ["tag @s add grave.omni.menu"],
-		"conditions":{
-			"enabling":[
-				{
-					"type": "palladium:action",
-					"cooldown": 1,
-					"key_type": "key_bind",
-					"needs_empty_hand": false,
-					"allow_scrolling_when_crouching": true
-				}
-			],
-			"unlocking":[
-				{
-					"type": "palladium:command_result",
-					"command": "execute if entity @s[tag=!grave.omni.menu]",
-					"comparison": "==",
-					"compare_to": 1,
-					"log": false
-				},
-				{
-					"type": "palladium:has_tag",
-					"tag": "grave.omni.user"
-				}
-			]
-		}
+			"type": "palladium:command",
+			"icon": "#grave.ht:proto/proto_codes",
+			"title": {"translate":"ability.grave.ht.omnitrix.openmenu","bold":true,"color":"#ffffff"},
+			"bar_color": "light_gray",
+			"hidden": true,
+			"hidden_in_bar": false,
+			"list_index": 4,
+			"commands": ["tag @s add grave.omni.menu"],
+			"conditions":{
+				"enabling":[
+					{
+						"type": "palladium:action",
+						"cooldown": 1,
+						"key_type": "key_bind",
+						"needs_empty_hand": false,
+						"allow_scrolling_when_crouching": true
+					}
+				],
+				"unlocking":[
+					{
+						"type": "palladium:not",
+						"conditions": [{
+							"type": "palladium:has_tag",
+							"tag": "grave.omni.menu"
+						}]
+					},
+					{
+						"type": "palladium:has_tag",
+						"tag": "grave.omni.user"
+					}
+				]
+			}
 		},
 		"speed_demon":{
 			"type": "palladium:attribute_modifier",
@@ -201,11 +199,11 @@
 				],
 				"unlocking":[
 					{
-						"type": "palladium:command_result",
-						"command": "execute if entity @s[tag=!grave.omni.menu]",
-						"comparison": "==",
-						"compare_to": 1,
-						"log": false
+						"type": "palladium:not",
+						"conditions": [{
+							"type": "palladium:has_tag",
+							"tag": "grave.omni.menu"
+						}]
 					}
 				]
 			}
