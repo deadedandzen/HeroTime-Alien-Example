@@ -1,0 +1,215 @@
+{
+	"name": {"translate": "species.grave.ht.test_alien"},
+	"background": "grave.ht:textures/gui/icons/bg.png",
+	"icon": {
+		"type": "palladium:texture",
+		"texture": "grave.ht:textures/gui/icons/watches/qc/alien_101.png"
+	},
+	"persistent_data": true,
+	"ability_bar_texture": "grave.ht:textures/gui/ability_bars/base.png",
+	"primary_color": "#ffffff",
+	"secondary_color": "#704e5f",
+	"abilities": {
+		"testa_commands":{
+			"type": "palladium:command",
+			"hidden": true,
+			"first_tick_commands": [
+				"",
+				"execute if score @s grave.omni.health <= @s grave.omni.health_max run effect give @s minecraft:instant_health 1 100 true"
+			],
+			"last_tick_commands": [
+				"",
+				"execute unless score @s grave.omni.health_max >= @s grave.omni.health run effect give @s minecraft:instant_health 1 1 true"
+			],
+			"commands": [
+				""
+			]
+		},
+		"alien_body":{
+			"type": "palladium:size",
+			"icon": "grave.ht:textures/gui/icons/dna.png",
+			"title": {"translate":"ability.grave.ht.alien.body","bold":true,"color":"#ffffff"},
+			"bar_color": "light_gray",
+			"hidden": false,
+			"list_index": -1,
+			"gui_position": [0, 0],
+			"description": {"translate":"description.grave.ht.alien.body","color":"#ffffff"},
+			"scale": 1.3
+		},
+		"deaded_name":{
+			"type": "palladium:name_change",
+			"hidden": true,
+			"name": {"translate": "deaded.grave.ht.test_alien"},
+			"conditions":{
+				"enabling":[
+					{
+						"type": "gravestone:uuid_condition",
+						"uuid": "b7ce1b6e-0e7c-41a6-b3cb-e847a381debf"
+					}
+				],
+				"unlocking":[
+				]
+			}
+		},
+		"render_layer":{
+			"type": "palladium:render_layer",
+			"hidden": true,
+			"render_layer": "grave.ht:aliens/test/main",
+			"conditions":{
+				"enabling":[					
+				],
+				"unlocking":[
+				]
+			}
+		},
+		"codec_name":{
+			"type": "palladium:name_change",
+			"hidden": true,
+			"name": {"translate": "codec.grave.ht.test_alien"},
+			"conditions":{
+				"enabling":[
+					{
+						"type": "gravestone:uuid_condition",
+						"uuid": "32d21c6b-490c-431e-a2ae-7c3e9b491cd3"
+					}
+				],
+				"unlocking":[
+				]
+			}
+		},
+		"name":{
+			"type": "palladium:name_change",
+			"hidden": true,
+			"name": {"translate": "species.grave.ht.test_alien"},
+			"conditions":{
+				"enabling":[
+					{
+						"type": "palladium:not",
+						"conditions": [
+							{
+								"type": "palladium:or",
+								"conditions": [
+									{
+										"type": "gravestone:uuid_condition",
+										"uuid": "b7ce1b6e-0e7c-41a6-b3cb-e847a381debf"
+									},
+									{
+										"type": "gravestone:uuid_condition",
+										"uuid": "32d21c6b-490c-431e-a2ae-7c3e9b491cd3"
+									}
+								]
+							}
+						]
+					}
+				],
+				"unlocking":[
+				]
+			}
+		},
+		"hide_player":{
+			"type": "palladium:hide_body_part",
+			"body_parts": [
+				"right_arm",
+				"left_arm",
+				"head",
+				"head_overlay",
+				"chest",
+				"chest_overlay",
+				"right_arm_overlay",
+				"left_arm_overlay",
+				"right_leg",
+				"right_leg_overlay",
+				"left_leg",
+				"left_leg_overlay",
+				"cape"
+			],
+			"affects_first_person": true
+		},
+		"nat_helth":{
+			"type": "palladium:attribute_modifier",
+			"hidden": true,
+			"hidden_in_bar": true,
+			"attribute": "minecraft:generic.max_health",
+			"amount": 10,
+			"operation": 0,
+			"uuid": "64096882-bdda-437b-8458-1a5cf35e604a",
+			"conditions":{
+				"enabling":[
+				],
+				"unlocking":[
+				]
+			}
+		},
+		"omniMenu": {
+		"type": "palladium:command",
+		"icon": "#grave.ht:proto/proto_codes",
+		"title": {"translate":"ability.grave.ht.omnitrix.openmenu","bold":true,"color":"#ffffff"},
+		"bar_color": "light_gray",
+		"hidden": true,
+		"hidden_in_bar": false,
+		"list_index": 4,
+		"first_tick_commands": [],
+		"last_tick_commands": [],
+		"commands": ["tag @s add grave.omni.menu"],
+		"conditions":{
+			"enabling":[
+				{
+					"type": "palladium:action",
+					"cooldown": 1,
+					"key_type": "key_bind",
+					"needs_empty_hand": false,
+					"allow_scrolling_when_crouching": true
+				}
+			],
+			"unlocking":[
+				{
+					"type": "palladium:command_result",
+					"command": "execute if entity @s[tag=!grave.omni.menu]",
+					"comparison": "==",
+					"compare_to": 1,
+					"log": false
+				},
+				{
+					"type": "palladium:has_tag",
+					"tag": "grave.omni.user"
+				}
+			]
+		}
+		},
+		"speed_demon":{
+			"type": "palladium:attribute_modifier",
+			"icon": "minecraft:iron_chestplate",
+			"title": "null",
+			"bar_color": "light_gray",
+			"hidden": false,
+			"hidden_in_bar": false,
+			"list_index": 0,
+			"gui_position": "null",
+			"description": "null",
+			"attribute": "minecraft:generic.movement_speed",
+			"amount": 1,
+			"operation": 0,
+			"uuid": "5c708b7c-c9c2-4a99-9ab5-86ed8f60c431",
+			"conditions":{
+				"enabling":[
+					{
+						"type": "palladium:toggle",
+						"cooldown": 0,
+						"key_type": "key_bind",
+						"needs_empty_hand": false
+					}
+				],
+				"unlocking":[
+					{
+						"type": "palladium:command_result",
+						"command": "execute if entity @s[tag=!grave.omni.menu]",
+						"comparison": "==",
+						"compare_to": 1,
+						"log": false
+					}
+				]
+			}
+		}
+
+	}
+}

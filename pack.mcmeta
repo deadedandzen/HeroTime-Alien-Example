@@ -1,0 +1,16 @@
+{
+  "pack": {
+    "id": "grave.ht.customalien",
+    "description": "example of how to impliment a custom alien transformation",
+    "pack_format": 15,
+    "version": "1.0.0"
+  },
+  "dependencies": {
+    "common": {
+    },
+    "fabric": {
+    },
+    "forge": {
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+	"type": "palladium:compound",
+	"layers": [
+		{
+			"type": "geckolib:default",
+			"model": "grave.ht:geo/aliens/alien_101/main.geo.json",
+			"texture": {
+				"base": "grave.ht:textures/models/aliens/alien_101/main.png",
+				"variables": {
+					"X":{
+						"type": "palladium:objective_score",
+						"objective": "grave.omni.uniform"
+					}
+				},
+				"transformers": [
+				  {
+					"type": "palladium:overlay",
+					"overlay": "grave.ht:textures/models/aliens/alien_101/uniform_#X.png"
+				  }
+				],
+				"output": "grave.ht:textures/models/aliens/alien_101/main_#X.png"
+			},
+			"bones": {
+				"head": "armorHead",
+				"body": "armorBody",
+				"right_arm": "armorRightArm",
+				"left_arm": "armorLeftArm",
+				"right_leg": "armorRightLeg",
+				"left_leg": "armorLeftLeg"
+			},
+  	          	"conditions" : [
+			]
+		}
+	]
+}
